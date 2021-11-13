@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <button v-on:click="greet">创建用户</button>
     <create-user v-if="showCreateUserModal"></create-user>
-    <button @click="goto">测试</button>
     <router-link to="/text">测试</router-link>
     <router-link to="/create">注册</router-link>
     <router-view></router-view>
@@ -25,15 +23,7 @@ export default {
       showCreateUserModal: false
     }
   },
-  methods: {
-    greet: function () {
-      this.showCreateUserModal = true
-    },
-    goto: function () {
-      console.log('1')
-      // this.$router.push({ path: '/' })
-    }
-  }
+  methods: {}
 }
 </script>
 

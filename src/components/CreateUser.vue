@@ -1,17 +1,30 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <el-form ref="form" :model="form" label-width="100px" class="resigter-box">
 
-    <label>用户名: </label><input type="text" v-model.trim="username" /> <br />
-    <label>密码: </label><input type="password" v-model.trim="password" />
-    <br />
-    <label>手机号: </label><input type="text" v-model.trim="phoneNumber" />
-    <br />
-    <input type="checkbox" id="isVipCheckBox" v-model="isVip" /><label
-      >isVip
-    </label>
-    <br />
-    <button v-on:click="register">注册</button>
+      <el-form-item label="用户名">
+        <el-input v-model="form.username"></el-input>
+      </el-form-item>
+      <el-form-item label="密码">
+        <el-input show-password v-model="form.password"></el-input>
+      </el-form-item>
+      <el-form-item label="手机号">
+        <el-input v-model="form.phonenumber"></el-input>
+      </el-form-item>
+
+      <el-form-item label="是否是会员">
+        <el-radio-group v-model="form.isVip">
+          <el-radio :label="1">会员</el-radio>
+          <el-radio :label="0">非会员</el-radio>
+        </el-radio-group>
+      </el-form-item>
+
+      <el-form-item>
+        <el-button plain @click="onResigter">立即创建</el-button>
+        <el-button>取消</el-button>
+      </el-form-item>
+    </el-form>
+
   </div>
 </template>
 
@@ -23,29 +36,35 @@ export default {
   name: 'CreateUser',
   data () {
     return {
-      msg: '创建用户',
-      username: '',
-      password: '',
-      phoneNumber: '',
-      isVip: false
+      form: {
+        username: '',
+        password: '',
+        phonenumber: '',
+        isVip: 1
+      }
     }
   },
   methods: {
-    register: function () {
-      // this.$Message.info('查询')
-
+    onResigter () {
+      const h = this.$createElement
       axios
         .post('/api/user/add', { // 创建用户
-          username: this.username,
-          password: this.password,
-          phone: this.phoneNumber,
-          isVip: this.isVip ? 1 : 0
+          username: this.form.username,
+          password: this.form.password,
+          phone: this.form.phoneNumber,
+          isVip: this.form.isVip
         })
         .then(function (response) {
-          console.log(response)
+          this.$notify({
+            title: '提示',
+            message: h('i', {style: 'color: teal'}, response.statusText)
+          })
         })
         .catch(function (error) {
-          console.log(error)
+          this.$notify({
+            title: '提示',
+            message: h('i', {style: 'color: teal'}, error)
+          })
         })
     }
   }
@@ -53,8 +72,14 @@ export default {
 </script>
 
 <style scoped>
-h1,
-h2 {
-  font-weight: normal;
+.resigter-box {
+  border: 1px solid #DCDFE6;
+  width: 400px;
+  margin: 180px auto;
+  padding: 35px 35px 15px 35px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  box-shadow: 0 0 25px #909399;
 }
 </style>
