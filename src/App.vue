@@ -1,19 +1,24 @@
 <template>
   <div id="app">
-    <!-- <router-view/> -->
     <button v-on:click="greet">创建用户</button>
     <create-user v-if="showCreateUserModal"></create-user>
+    <button @click="goto">测试</button>
+    <router-link to="/text">测试</router-link>
+    <router-link to="/create">注册</router-link>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 
-import createUser from '../src/components/Create.vue'
+import createUser from '../src/components/CreateUser.vue'
+import myTest from '../src/components/MyTest.vue'
 
 export default {
   name: 'App',
   components: {
-    createUser
+    createUser,
+    myTest
   },
   data () {
     return {
@@ -23,6 +28,10 @@ export default {
   methods: {
     greet: function () {
       this.showCreateUserModal = true
+    },
+    goto: function () {
+      console.log('1')
+      // this.$router.push({ path: '/' })
     }
   }
 }

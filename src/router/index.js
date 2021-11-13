@@ -1,15 +1,24 @@
 import Vue from 'vue'
-import Router from 'vue-router'
-import CreateUser from '@/components/Create'
+import VueRouter from 'vue-router'
 
-Vue.use(Router)
+import CreateUser from '@/components/CreateUser'
+import Test from '@/components/MyTest'
 
-export default new Router({
+// 安装路由
+Vue.use(VueRouter)
+
+// 配置导出路由
+export default new VueRouter({
   routes: [
     {
-      path: '/',
-      name: 'create',
+      path: '/create',
+      name: '注册用户',
       component: CreateUser
+    },
+    {
+      path: '/text',
+      name: '测试',
+      component: Test
     }
   ]
 })

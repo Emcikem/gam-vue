@@ -32,6 +32,8 @@ export default {
   },
   methods: {
     register: function () {
+      // this.$Message.info('查询')
+
       axios
         .post('/api/user/add', { // 创建用户
           username: this.username,
