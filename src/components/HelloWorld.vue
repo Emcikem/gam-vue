@@ -33,7 +33,7 @@ export default {
   methods: {
     register: function () {
       axios
-        .post('/user/add', { // 创建用户
+        .post('/api/user/add', { // 创建用户
           username: this.username,
           password: this.password,
           phone: this.phoneNumber,
