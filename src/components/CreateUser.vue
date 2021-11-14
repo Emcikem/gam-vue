@@ -1,7 +1,9 @@
 <template>
-  <div class="hello">
-    <el-form ref="form" :model="form" label-width="100px" class="resigter-box">
-
+  <div>
+    <el-form ref="form" :model="form" label-width="80px" class="resigter-box">
+      <el-form-item label-width="0px">
+        <h1>创建用户</h1>
+      </el-form-item>
       <el-form-item label="用户名">
         <el-input v-model="form.username"></el-input>
       </el-form-item>
@@ -12,14 +14,14 @@
         <el-input v-model="form.phonenumber"></el-input>
       </el-form-item>
 
-      <el-form-item label="是否是会员">
+      <el-form-item label="会员">
         <el-radio-group v-model="form.isVip">
           <el-radio :label="1">会员</el-radio>
           <el-radio :label="0">非会员</el-radio>
         </el-radio-group>
       </el-form-item>
 
-      <el-form-item>
+      <el-form-item label-width="0px">
         <el-button plain @click="onResigter">注册</el-button>
         <el-button>取消</el-button>
       </el-form-item>
@@ -68,7 +70,7 @@ export default {
   border: 1px solid #DCDFE6;
   width: 400px;
   margin: 10px auto;
-  padding: 35px 35px 15px 35px;
+  padding: 35px 20px 15px 20px;
   border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;

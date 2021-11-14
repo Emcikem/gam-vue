@@ -1,6 +1,9 @@
 <template>
-  <div class="hello">
-    <el-form ref="form" :model="form" label-width="100px" class="resigter-box">
+  <div>
+    <el-form ref="form" :model="form" label-width="50px" class="resigter-box">
+      <el-form-item label-width="0px">
+        <h1>创建服务</h1>
+      </el-form-item>
       <el-form-item label="名称">
         <el-input v-model="form.name"></el-input>
       </el-form-item>
@@ -14,12 +17,11 @@
         <el-input v-model="form.desc" type="textarea" :rows="5" maxlength="100" show-word-limit></el-input>
       </el-form-item>
 
-      <el-form-item>
+      <el-form-item label-width="0px">
         <el-button plain @click="onResigter">添加</el-button>
-        <el-button>取消</el-button>
+        <el-button @click="cancel">取消</el-button>
       </el-form-item>
     </el-form>
-
   </div>
 </template>
 
@@ -53,6 +55,9 @@ export default {
           })
         }
       }).catch(err => console.log(err))
+    },
+    cancel () {
+      this.$emit('transfer', false)
     }
   }
 }
@@ -63,7 +68,7 @@ export default {
   border: 1px solid #DCDFE6;
   width: 400px;
   margin: 10px auto;
-  padding: 35px 35px 15px 35px;
+  padding: 35px 20px 15px 20px;
   border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
