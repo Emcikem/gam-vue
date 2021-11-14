@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 
 import CreateUser from '@/components/CreateUser'
 import Test from '@/components/MyTest'
+import ServiceTable from '@/components/ServiceTable'
 
 // 安装路由
 Vue.use(VueRouter)
@@ -19,6 +20,11 @@ export default new VueRouter({
       path: '/text',
       name: '测试',
       component: Test
+    },
+    {
+      path: '/service',
+      name: '服务',
+      component: ServiceTable
     }
   ]
 })

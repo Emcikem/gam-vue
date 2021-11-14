@@ -3,6 +3,7 @@
     <create-user v-if="showCreateUserModal"></create-user>
     <router-link to="/text">测试</router-link>
     <router-link to="/create">注册</router-link>
+    <router-link to="/service">服务列表</router-link>
     <router-view></router-view>
   </div>
 </template>

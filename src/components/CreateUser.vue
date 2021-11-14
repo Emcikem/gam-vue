@@ -46,26 +46,18 @@ export default {
   },
   methods: {
     onResigter () {
-      const h = this.$createElement
-      axios
-        .post('/api/user/add', { // 创建用户
-          username: this.form.username,
-          password: this.form.password,
-          phone: this.form.phoneNumber,
-          isVip: this.form.isVip
-        })
-        .then(function (response) {
+      axios.post('api/user/add', {
+        username: this.form.username,
+        password: this.form.password,
+        phonenumber: this.form.phonenumber,
+        isVip: this.form.isVip
+      }).then(res => {
+        if (res.data) {
           this.$notify({
-            title: '提示',
-            message: h('i', {style: 'color: teal'}, response.statusText)
+            message: this.$createElement('i', {style: 'color: teal'}, res.data.message)
           })
-        })
-        .catch(function (error) {
-          this.$notify({
-            title: '提示',
-            message: h('i', {style: 'color: teal'}, error)
-          })
-        })
+        }
+      }).catch(err => console.log(err))
     }
   }
 }
