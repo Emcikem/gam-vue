@@ -5,21 +5,21 @@
       class="service-table">
       <el-table-column
         label="名称"
-        width="180">
+        width="200px">
         <template slot-scope="scope">
           <span style="margin-left: 10px">{{ scope.row.name }}</span>
         </template>
       </el-table-column>
       <el-table-column
         label="价格"
-        width="180">
+        width="200px">
         <template slot-scope="scope">
           <span style="margin-left: 10px">{{ scope.row.cost }}</span>
         </template>
       </el-table-column>
       <el-table-column
         label="标签"
-        width="180">
+        width="200px">
         <template slot-scope="scope">
           <div slot="reference" class="tag-wrapper">
             <el-tag size="medium">{{ scope.row.tag }}</el-tag>
@@ -91,8 +91,8 @@ export default {
 <style scoped>
 .service-table {
   border: 1px solid #DCDFE6;
-  width: 1000px;
-  margin: 10px auto;
+  width: 100%;
+  /* margin: 10px auto; */
   padding: 35px 35px 15px 35px;
   border-radius: 5px;
 }
