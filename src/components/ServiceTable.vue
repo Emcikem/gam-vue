@@ -35,6 +35,10 @@
             size="mini"
             type="danger"
             @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+          <el-button
+            size="mini"
+            type="success"
+            @click="handleAdd(scope.$index, scope.row)">添加</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -76,6 +80,9 @@ export default {
           this.$router.go(0)
         }
       }).catch(err => console.log(err))
+    },
+    handleAdd (index, row) {
+      console.log(index, row)
     }
   }
 }
@@ -84,12 +91,9 @@ export default {
 <style scoped>
 .service-table {
   border: 1px solid #DCDFE6;
-  width: 800px;
+  width: 1000px;
   margin: 10px auto;
   padding: 35px 35px 15px 35px;
   border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  box-shadow: 0 0 25px #909399;
 }
 </style>
