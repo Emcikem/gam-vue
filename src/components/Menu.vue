@@ -15,7 +15,7 @@
 
       <el-submenu index="3">
         <template slot="title">
-          <i class="el-icon-menu"></i> 信息管理
+          <i class="el-icon-menu"></i> 设备管理
         </template>
         <el-menu-item index="/text">列表管理</el-menu-item>
       </el-submenu>
@@ -35,4 +35,5 @@ export default {
 </script>
 
 <style scoped>
+
 </style>

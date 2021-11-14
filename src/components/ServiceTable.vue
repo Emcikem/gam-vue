@@ -7,14 +7,14 @@
         label="名称"
         width="200px">
         <template slot-scope="scope">
-          <span style="margin-left: 10px">{{ scope.row.name }}</span>
+          <span>{{ scope.row.name }}</span>
         </template>
       </el-table-column>
       <el-table-column
         label="价格"
         width="200px">
         <template slot-scope="scope">
-          <span style="margin-left: 10px">{{ scope.row.cost }}</span>
+          <span>{{ scope.row.cost }}</span>
         </template>
       </el-table-column>
       <el-table-column
@@ -26,6 +26,13 @@
           </div>
         </template>
       </el-table-column>
+      <el-table-column
+        label="描述"
+        width="200px">
+        <template slot-scope="scope">
+          <span>{{ scope.row.desc }}</span>
+        </template>
+      </el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button
@@ -34,6 +41,7 @@
           <el-button
             size="mini"
             type="danger"
+            slot="reference"
             @click="handleDelete(scope.$index, scope.row)">删除</el-button>
           <el-button
             size="mini"
@@ -92,8 +100,7 @@ export default {
 .service-table {
   border: 1px solid #DCDFE6;
   width: 100%;
-  /* margin: 10px auto; */
-  padding: 35px 35px 15px 35px;
+  padding: 20px 20px 20px 20px;
   border-radius: 5px;
 }
 </style>
