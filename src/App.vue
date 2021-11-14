@@ -1,11 +1,7 @@
 <template>
   <div id="app">
-    <router-link to="/createservice">添加服务</router-link>
-    <router-link to="/create">注册</router-link>
-    <router-link to="/servicetable">服务列表</router-link>
-    <router-link to="/service">服务页面</router-link>
-    <router-link to="/text">测试</router-link>
     <router-link to="/menu">导航</router-link>
+    <router-link to="/home">home</router-link>
     <router-view></router-view>
   </div>
 </template>

@@ -1,66 +1,36 @@
 <template>
-  <el-row class="tac">
-    <el-col :span="5">
-      <el-menu
-        default-active="2"
-        class="el-menu-vertical-demo"
-        @open="handleOpen"
-        @close="handleClose"
-      >
-        <el-submenu index="1">
-          <template slot="title">
-            <i class="el-icon-location"></i>
-            <span>用户管理</span>
-          </template>
-          <el-menu-item-group>
-            <el-menu-item index="1-1">选项1</el-menu-item>
-            <el-menu-item index="1-2">选项2</el-menu-item>
-          </el-menu-item-group>
-        </el-submenu>
-        <el-submenu index="2">
-          <template slot="title">
-            <i class="el-icon-location"></i>
-            <span>设备管理</span>
-          </template>
-          <el-menu-item-group>
-            <el-menu-item index="2-1">选项1</el-menu-item>
-            <el-menu-item index="2-2">选项2</el-menu-item>
-          </el-menu-item-group>
-        </el-submenu>
-        <el-submenu index="3">
-          <template slot="title">
-            <i class="el-icon-location"></i>
-            <span>服务管理</span>
-          </template>
-          <el-menu-item-group>
-            <el-menu-item index="3-1">选项1</el-menu-item>
-            <el-menu-item index="3-2">选项2</el-menu-item>
-          </el-menu-item-group>
-        </el-submenu>
-      </el-menu>
-    </el-col>
-    <el-col>
-      <h1>{{ msg }}</h1>
-    </el-col>
-  </el-row>
+  <el-aside width="200px">
+    <el-menu default-active="1" class="el-menu-vertical-demo" router>
+      <!-- 无子集 -->
+      <el-menu-item index="/service">
+        <i class="el-icon-menu"></i>
+        <span slot="title">服务管理</span>
+      </el-menu-item>
+
+      <!-- 无子集 -->
+      <el-menu-item index="/create">
+        <i class="el-icon-menu"></i>
+        <span slot="title">用户管理</span>
+      </el-menu-item>
+
+      <el-submenu index="3">
+        <template slot="title">
+          <i class="el-icon-menu"></i> 信息管理
+        </template>
+        <el-menu-item index="/text">列表管理</el-menu-item>
+      </el-submenu>
+
+    </el-menu>
+  </el-aside>
 </template>
 
 <script>
 export default {
   name: 'Menu',
   data () {
-    return {
-      msg: ''
-    }
+    return {}
   },
-  methods: {
-    handleOpen (key, keyPath) {
-      this.msg = key + '-' + keyPath
-    },
-    handleClose (key, keyPath) {
-      this.msg = key + '-' + keyPath
-    }
-  }
+  methods: {}
 }
 </script>
 
