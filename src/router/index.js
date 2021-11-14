@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import CreateUser from '@/components/CreateUser'
 import Test from '@/components/MyTest'
 import ServiceTable from '@/components/ServiceTable'
+import CreateService from '@/components/CreateService'
 
 // 安装路由
 Vue.use(VueRouter)
@@ -25,6 +26,11 @@ export default new VueRouter({
       path: '/service',
       name: '服务',
       component: ServiceTable
+    },
+    {
+      path: '/createservice',
+      name: '添加服务',
+      component: CreateService
     }
   ]
 })

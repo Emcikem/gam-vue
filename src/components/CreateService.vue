@@ -1,26 +1,21 @@
 <template>
   <div class="hello">
     <el-form ref="form" :model="form" label-width="100px" class="resigter-box">
-
-      <el-form-item label="用户名">
-        <el-input v-model="form.username"></el-input>
+      <el-form-item label="名称">
+        <el-input v-model="form.name"></el-input>
       </el-form-item>
-      <el-form-item label="密码">
-        <el-input show-password v-model="form.password"></el-input>
+      <el-form-item label="价格">
+        <el-input v-model="form.cost" oninput="value=value.replace(/[^\d]/g,'')"></el-input>
       </el-form-item>
-      <el-form-item label="手机号">
-        <el-input v-model="form.phonenumber"></el-input>
+      <el-form-item label="标签">
+        <el-input v-model="form.tag" maxlength="10" show-word-limit></el-input>
       </el-form-item>
-
-      <el-form-item label="是否是会员">
-        <el-radio-group v-model="form.isVip">
-          <el-radio :label="1">会员</el-radio>
-          <el-radio :label="0">非会员</el-radio>
-        </el-radio-group>
+      <el-form-item label="描述">
+        <el-input v-model="form.desc" type="textarea" :rows="5" maxlength="100" show-word-limit></el-input>
       </el-form-item>
 
       <el-form-item>
-        <el-button plain @click="onResigter">注册</el-button>
+        <el-button plain @click="onResigter">添加</el-button>
         <el-button>取消</el-button>
       </el-form-item>
     </el-form>
@@ -33,24 +28,24 @@
 import axios from 'axios'
 
 export default {
-  name: 'CreateUser',
+  name: 'CreateService',
   data () {
     return {
       form: {
-        username: '',
-        password: '',
-        phonenumber: '',
-        isVip: 1
+        name: '',
+        cost: null,
+        tag: '',
+        desc: ''
       }
     }
   },
   methods: {
     onResigter () {
-      axios.post('api/user/add', {
-        username: this.form.username,
-        password: this.form.password,
-        phonenumber: this.form.phonenumber,
-        isVip: this.form.isVip
+      axios.post('api/service/add', {
+        name: this.form.name,
+        cost: Number(this.form.cost),
+        tag: this.form.tag,
+        desc: this.form.desc
       }).then(res => {
         if (res.data) {
           this.$notify({
@@ -73,5 +68,8 @@ export default {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   box-shadow: 0 0 25px #909399;
+}
+.desc-input {
+  height: 1px;
 }
 </style>
