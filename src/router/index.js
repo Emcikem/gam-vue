@@ -14,7 +14,7 @@ export default new VueRouter({
       component: () => import('@/components/Menu')
     },
     {
-      path: '/home',
+      path: '/',
       name: 'home',
       meta: {title: '首页'},
       component: () => import('@/views/Home'),
@@ -32,10 +32,10 @@ export default new VueRouter({
           component: () => import('@/views/User')
         },
         {
-          path: '/text',
+          path: '/equipment',
           name: '设备管理',
           meta: {title: '设备管理'},
-          component: () => import('@/components/MyTest')
+          component: () => import('@/views/Equipment')
         }
       ]
     }

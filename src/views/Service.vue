@@ -4,7 +4,7 @@
         <service-table></service-table>
         <create-service v-if="showCreateService" @transfer="getShowable" class="pop"></create-service>
     </el-form-item>
-    <el-form-item>
+    <el-form-item label-width="0px">
         <el-button type="primary" round @click="createService">添加服务</el-button>
     </el-form-item>
   </el-form>

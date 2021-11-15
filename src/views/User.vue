@@ -4,7 +4,7 @@
         <user-table></user-table>
         <create-user v-if="showCreateUser" @transfer="getShowable" class="pop"></create-user>
     </el-form-item>
-    <el-form-item>
+    <el-form-item label-width="0px">
         <el-button type="primary" round @click="createUser">添加用户</el-button>
     </el-form-item>
   </el-form>

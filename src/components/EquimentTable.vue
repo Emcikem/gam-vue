@@ -1,34 +1,34 @@
 <template>
   <div>
     <el-table
-      :data="userData"
+      :data="equipmentData"
       class="service-table">
       <el-table-column
-        label="用户名"
+        label="设备"
         width="200px">
         <template slot-scope="scope">
-          <span>{{ scope.row.username }}</span>
+          <span>{{ scope.row.name }}</span>
         </template>
       </el-table-column>
       <el-table-column
-        label="手机号"
+        label="库存"
         width="200px">
         <template slot-scope="scope">
-          <span>{{ scope.row.phone }}</span>
+          <span>{{ scope.row.stock }}</span>
         </template>
       </el-table-column>
       <el-table-column
-        label="余额"
+        label="详情"
         width="200px">
         <template slot-scope="scope">
-          <span>{{ scope.row.money }}</span>
+          <span>{{ scope.row.desc }}</span>
         </template>
       </el-table-column>
       <el-table-column
-        label="是否vip"
+        label="是否可用"
         width="200px">
         <template slot-scope="scope">
-          <span>{{ formatVip(scope.row.isVip) }}</span>
+          <span>{{ formatUsable(scope.row.usable) }}</span>
         </template>
       </el-table-column>
       <el-table-column label="操作">
@@ -50,37 +50,37 @@
 <script>
 import axios from 'axios'
 export default {
-  tag: 'UserTable',
+  tag: 'EquipmentTable',
   data () {
     return {
-      userData: []
+      equipmentData: []
     }
   },
   created: function () {
-    axios.get('/api/user/queryAll')
+    axios.get('/api/equipment/queryAll')
       .then(res => {
         if (res.data) {
-          this.userData = res.data.data
+          this.equipmentData = res.data.data
         }
       })
       .catch(err => console.log(err))
   },
   methods: {
-    formatVip (isVip) {
-      return isVip === 1 ? '是' : '否'
+    formatUsable (usable) {
+      return usable === 1 ? '可用' : '不可用'
     },
     handleEdit (index, row) {
       console.log(index, row)
     },
     handleDelete (index, row) {
-      axios.delete('api/user/delete', {
+      axios.delete('api/equipment/delete', {
         params: {id: row.id}
       }).then(res => {
         if (res.data) {
           this.$notify({
             message: this.$createElement('i', {style: 'color: teal'}, res.data.message)
           })
-          delete this.userData[index]
+          delete this.equipmentData[index]
           // TODO :组件刷新
           this.$router.go(0)
         }
