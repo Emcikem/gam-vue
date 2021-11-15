@@ -6,7 +6,7 @@
       <!-- 右侧内容 -->
       <el-container>
         <!-- 右侧头部 -->
-        <el-header>
+        <el-header style="height: 30px">
           <breadcrumb/>
         </el-header>
         <!-- 右侧主内容 -->

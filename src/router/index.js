@@ -22,19 +22,19 @@ export default new VueRouter({
         {
           path: '/service',
           name: '服务',
-          meta: {title: '服务'},
+          meta: {title: '服务管理'},
           component: () => import('@/views/Service')
         },
         {
-          path: '/create',
+          path: '/user',
           name: '用户管理',
-          meta: {title: '注册用户'},
-          component: () => import('@/components/CreateUser')
+          meta: {title: '用户管理'},
+          component: () => import('@/views/User')
         },
         {
           path: '/text',
           name: '设备管理',
-          meta: {title: '测试'},
+          meta: {title: '设备管理'},
           component: () => import('@/components/MyTest')
         }
       ]

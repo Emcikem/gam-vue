@@ -2,7 +2,7 @@
   <div>
     <el-form ref="form" :model="form" label-width="80px" class="resigter-box">
       <el-form-item label-width="0px">
-        <h1>创建用户</h1>
+        <h1> {{titleText}} </h1>
       </el-form-item>
       <el-form-item label="用户名">
         <el-input v-model="form.username"></el-input>
@@ -13,7 +13,9 @@
       <el-form-item label="手机号">
         <el-input v-model="form.phonenumber"></el-input>
       </el-form-item>
-
+      <el-form-item label="充值金额">
+        <el-input v-model="form.money"></el-input>
+      </el-form-item>
       <el-form-item label="会员">
         <el-radio-group v-model="form.isVip">
           <el-radio :label="1">会员</el-radio>
@@ -23,7 +25,7 @@
 
       <el-form-item label-width="0px">
         <el-button plain @click="onResigter">注册</el-button>
-        <el-button>取消</el-button>
+        <el-button @click="cancel">取消</el-button>
       </el-form-item>
     </el-form>
 
@@ -38,11 +40,13 @@ export default {
   name: 'CreateUser',
   data () {
     return {
+      titleText: '创建用户',
       form: {
         username: '',
         password: '',
         phonenumber: '',
-        isVip: 1
+        isVip: 1,
+        money: null
       }
     }
   },
@@ -52,7 +56,8 @@ export default {
         username: this.form.username,
         password: this.form.password,
         phonenumber: this.form.phonenumber,
-        isVip: this.form.isVip
+        isVip: this.form.isVip,
+        money: Number(this.form.money)
       }).then(res => {
         if (res.data) {
           this.$notify({
@@ -60,6 +65,9 @@ export default {
           })
         }
       }).catch(err => console.log(err))
+    },
+    cancel () {
+      this.$emit('transfer', false)
     }
   }
 }

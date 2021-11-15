@@ -2,7 +2,7 @@
   <div>
     <el-form ref="form" :model="form" label-width="50px" class="resigter-box">
       <el-form-item label-width="0px">
-        <h1> {{titleText}} </h1>
+        <h1>修改服务</h1>
       </el-form-item>
       <el-form-item label="名称">
         <el-input v-model="form.name"></el-input>
@@ -30,10 +30,9 @@
 import axios from 'axios'
 
 export default {
-  name: 'CreateService',
+  name: 'UpdateService',
   data () {
     return {
-      titleText: '创建服务',
       form: {
         name: '',
         cost: null,
@@ -44,7 +43,7 @@ export default {
   },
   methods: {
     onResigter () {
-      axios.post('api/service/add', {
+      axios.post('api/service/update', {
         name: this.form.name,
         cost: Number(this.form.cost),
         tag: this.form.tag,
@@ -58,7 +57,7 @@ export default {
       }).catch(err => console.log(err))
     },
     cancel () {
-      this.$emit('transfer', false)
+      // this.$emit('transfer', false)
     }
   }
 }

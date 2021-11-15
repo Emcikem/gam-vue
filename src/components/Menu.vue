@@ -8,17 +8,16 @@
       </el-menu-item>
 
       <!-- 无子集 -->
-      <el-menu-item index="/create">
+      <el-menu-item index="/user">
         <i class="el-icon-menu"></i>
         <span slot="title">用户管理</span>
       </el-menu-item>
 
-      <el-submenu index="3">
-        <template slot="title">
-          <i class="el-icon-menu"></i> 设备管理
-        </template>
-        <el-menu-item index="/text">列表管理</el-menu-item>
-      </el-submenu>
+      <!-- 无子集 -->
+      <el-menu-item index="/text">
+        <i class="el-icon-menu"></i>
+        <span slot="title">设备管理</span>
+      </el-menu-item>
 
     </el-menu>
   </el-aside>
