@@ -55,7 +55,7 @@ export default {
       axios.post('api/user/add', {
         username: this.form.username,
         password: this.form.password,
-        phonenumber: this.form.phonenumber,
+        phone: this.form.phonenumber,
         isVip: this.form.isVip,
         money: Number(this.form.money)
       }).then(res => {
