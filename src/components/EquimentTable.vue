@@ -2,9 +2,9 @@
   <div>
     <el-table
       :data="equipmentData"
-      class="service-table">
+      class="equipment-table">
       <el-table-column
-        label="设备"
+        label="名称"
         width="200px">
         <template slot-scope="scope">
           <span>{{ scope.row.name }}</span>
@@ -49,8 +49,7 @@
 
 <script>
 import axios from 'axios'
-import { eventBus } from '../main'
-
+import { eventBus } from '../main.js'
 export default {
   tag: 'EquipmentTable',
   data () {
@@ -72,9 +71,8 @@ export default {
       return usable === 1 ? '可用' : '不可用'
     },
     handleEdit (index, row) {
-      eventBus.$emit('updateLister', row.id, row)
-      this.$emit('transferEdit', true)
-      console.log(index, row)
+      eventBus.$emit('updateLister1', row.id, row)
+      this.$emit('transferedit1', true) // 父子组件
     },
     handleDelete (index, row) {
       axios.delete('api/equipment/delete', {
@@ -95,7 +93,7 @@ export default {
 </script>
 
 <style scoped>
-.service-table {
+.equipment-table {
   border: 1px solid #DCDFE6;
   width: 100%;
   padding: 20px 20px 20px 20px;

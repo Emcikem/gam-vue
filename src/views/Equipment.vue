@@ -1,8 +1,8 @@
 <template>
   <el-form label-width="80px">
     <el-form-item label-width="0px">
-        <equipment-table @transferEdit="getShowable"></equipment-table>
-        <create-equipment v-if="showCreateEquipment" @transfer="getShowable" class="pop"></create-equipment>
+        <equipment-table @transferedit1="getShowable"></equipment-table>
+        <create-equipment v-show="showCreateEquipment" @transfer="getShowable" class="pop"></create-equipment>
     </el-form-item>
     <el-form-item label-width="0px">
         <el-button type="primary" round @click="createEquipment">添加设备</el-button>
