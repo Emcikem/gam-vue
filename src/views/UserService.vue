@@ -1,24 +1,24 @@
 <template>
   <el-form label-width="80px">
     <el-form-item label-width="0px">
-        <user-table @transferedit="getShowable"></user-table>
-        <create-user v-show="showCreateUser" @transfer="getShowable" class="pop"></create-user>
+        <user-service-table @transferedit="getShowable"></user-service-table>
+        <create-user-service v-show="showCreateUser" @transfer="getShowable" class="pop"></create-user-service>
     </el-form-item>
     <el-form-item label-width="0px">
-        <el-button type="primary" round @click="createUser">添加用户</el-button>
+        <el-button type="primary" round @click="createUser">添加用户服务</el-button>
     </el-form-item>
   </el-form>
 
 </template>
 
 <script>
-import CreateUser from '../components/CreateUser.vue'
-import UserTable from '../components/UserTable.vue'
+import CreateUserService from '../components/CreateUserService.vue'
+import UserServiceTable from '../components/UserServiceTable.vue'
 export default {
   name: 'User',
   components: {
-    UserTable,
-    CreateUser
+    UserServiceTable,
+    CreateUserService
   },
   data () {
     return {
