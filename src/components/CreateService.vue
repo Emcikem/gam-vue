@@ -18,7 +18,7 @@
       </el-form-item>
 
       <el-form-item label-width="0px">
-        <el-button plain @click="onResigter">添加</el-button>
+        <el-button plain @click="onSubmit">{{ buttonText }}</el-button>
         <el-button @click="cancel">取消</el-button>
       </el-form-item>
     </el-form>
@@ -34,7 +34,8 @@ export default {
   name: 'CreateService',
   data () {
     return {
-      titleText: '',
+      titleText: '创建服务',
+      buttonText: '创建',
       form: {
         id: null,
         name: '',
@@ -45,7 +46,10 @@ export default {
     }
   },
   methods: {
-    onResigter () {
+    /**
+     * 创建
+     */
+    resigter () {
       axios.post('api/service/add', {
         name: this.form.name,
         cost: Number(this.form.cost),
@@ -59,15 +63,54 @@ export default {
         }
       }).catch(err => console.log(err))
     },
+    /**
+     * 更新
+     */
+    update () {
+      axios.post('api/service/change', {
+        id: this.form.id,
+        name: this.form.name,
+        cost: Number(this.form.cost),
+        tag: this.form.tag,
+        desc: this.form.desc
+      }).then(res => {
+        if (res.data) {
+          this.$notify({
+            message: this.$createElement('i', {style: 'color: teal'}, res.data.message)
+          })
+        }
+      }).catch(err => console.log(err))
+    },
+    /**
+     * 复用组件，添加和更新
+     */
+    onSubmit () {
+      if (this.form.id === null) {
+        this.resigter()
+      } else {
+        this.update()
+      }
+    },
     cancel () {
       this.id = null
       this.$emit('transfer', false)
+      this.titleText = '创建服务'
+      this.buttonText = '创建'
     }
   },
-  beforeCreate () {
-    eventBus.$on('jianting', (msg) => {
+  created () {
+    eventBus.$on('jianting', (msg, baseData) => { // 子组件通信，获取id
       this.form.id = msg
       this.titleText = msg
+      this.titleText = '更新服务'
+      this.buttonText = '更新'
+      this.form = {
+        id: baseData.id,
+        name: baseData.name,
+        cost: baseData.cost,
+        tag: baseData.tag,
+        desc: baseData.desc
+      }
     })
   }
 }
