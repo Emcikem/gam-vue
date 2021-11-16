@@ -22,7 +22,7 @@
       </el-form-item>
 
       <el-form-item label-width="0px">
-        <el-button plain @click="onResigter">添加</el-button>
+        <el-button plain @click="onResigter">{{ buttonText }}</el-button>
         <el-button @click="cancel">取消</el-button>
       </el-form-item>
     </el-form>
@@ -32,13 +32,15 @@
 <script>
 
 import axios from 'axios'
-
+import { eventBus } from '../main'
 export default {
   name: 'CreateEquipment',
   data () {
     return {
       titleText: '创建设备',
+      buttonText: '',
       form: {
+        id: null,
         name: '',
         stock: null,
         usable: 1,
@@ -64,6 +66,18 @@ export default {
     cancel () {
       this.$emit('transfer', false)
     }
+  },
+  created () {
+    /**
+     * 子组件通信，采用eventBus进行监听
+     * 获取id，从列表页获取id
+     * 同时进行更新窗口数据
+     */
+    eventBus.$on('updateLister', (msg, baseData) => {
+      this.form.id = msg
+      this.titleText = '更新设备'
+      this.buttonText = '更新'
+    })
   }
 }
 </script>

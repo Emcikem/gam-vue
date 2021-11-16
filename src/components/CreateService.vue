@@ -91,17 +91,31 @@ export default {
         this.update()
       }
     },
+    /**
+     * 取消按钮后，进行初始化，并且和父亲组件通信，关闭当前页面
+     */
     cancel () {
       this.id = null
       this.$emit('transfer', false)
       this.titleText = '创建服务'
       this.buttonText = '创建'
+      this.form = {
+        id: null,
+        name: '',
+        cost: null,
+        tag: '',
+        desc: ''
+      }
     }
   },
   created () {
-    eventBus.$on('jianting', (msg, baseData) => { // 子组件通信，获取id
+    /**
+     * 子组件通信，采用eventBus进行监听
+     * 获取id，从列表页获取id
+     * 同时进行更新窗口数据
+     */
+    eventBus.$on('updateLister', (msg, baseData) => {
       this.form.id = msg
-      this.titleText = msg
       this.titleText = '更新服务'
       this.buttonText = '更新'
       this.form = {

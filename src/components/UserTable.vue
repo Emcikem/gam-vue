@@ -49,6 +49,7 @@
 
 <script>
 import axios from 'axios'
+import { eventBus } from '../main'
 export default {
   tag: 'UserTable',
   data () {
@@ -70,8 +71,8 @@ export default {
       return isVip === 1 ? '是' : '否'
     },
     handleEdit (index, row) {
-      this.$emit('transferedit', true)
-      console.log(index, row)
+      eventBus.$emit('updateLister', row.id, row)
+      this.$emit('transferedit', true) // 父子组件
     },
     handleDelete (index, row) {
       axios.delete('api/user/delete', {

@@ -74,8 +74,8 @@ export default {
   },
   methods: {
     handleEdit (index, row) {
-      eventBus.$emit('jianting', row.id, row)
-      this.$emit('transferedit', true)
+      eventBus.$emit('updateLister', row.id, row)
+      this.$emit('transferedit', true) // 父子组件
     },
     handleDelete (index, row) {
       axios.delete('api/service/delete', {

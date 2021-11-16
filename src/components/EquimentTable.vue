@@ -49,6 +49,8 @@
 
 <script>
 import axios from 'axios'
+import { eventBus } from '../main'
+
 export default {
   tag: 'EquipmentTable',
   data () {
@@ -70,6 +72,7 @@ export default {
       return usable === 1 ? '可用' : '不可用'
     },
     handleEdit (index, row) {
+      eventBus.$emit('updateLister', row.id, row)
       this.$emit('transferEdit', true)
       console.log(index, row)
     },
