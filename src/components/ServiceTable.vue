@@ -55,6 +55,7 @@
 
 <script>
 import axios from 'axios'
+import { eventBus } from '../main.js'
 export default {
   tag: 'ServiceTable',
   data () {
@@ -73,6 +74,8 @@ export default {
   },
   methods: {
     handleEdit (index, row) {
+      eventBus.$emit('jianting', row.id)
+      this.$emit('transferedit', true)
       console.log(index, row)
     },
     handleDelete (index, row) {

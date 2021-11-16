@@ -28,13 +28,15 @@
 <script>
 
 import axios from 'axios'
+import { eventBus } from '../main'
 
 export default {
   name: 'CreateService',
   data () {
     return {
-      titleText: '创建服务',
+      titleText: '',
       form: {
+        id: null,
         name: '',
         cost: null,
         tag: '',
@@ -58,8 +60,15 @@ export default {
       }).catch(err => console.log(err))
     },
     cancel () {
+      this.id = null
       this.$emit('transfer', false)
     }
+  },
+  beforeCreate () {
+    eventBus.$on('jianting', (msg) => {
+      this.form.id = msg
+      this.titleText = msg
+    })
   }
 }
 </script>

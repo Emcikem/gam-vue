@@ -36,6 +36,12 @@ export default new VueRouter({
           name: '设备管理',
           meta: {title: '设备管理'},
           component: () => import('@/views/Equipment')
+        },
+        {
+          path: '/test',
+          name: '测试',
+          meta: {title: '测试'},
+          component: () => import('@/views/Test')
         }
       ]
     }

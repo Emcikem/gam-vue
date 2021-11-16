@@ -18,7 +18,7 @@
         </template>
       </el-table-column>
       <el-table-column
-        label="详情"
+        label="描述"
         width="200px">
         <template slot-scope="scope">
           <span>{{ scope.row.desc }}</span>
@@ -70,6 +70,7 @@ export default {
       return usable === 1 ? '可用' : '不可用'
     },
     handleEdit (index, row) {
+      this.$emit('transferEdit', true)
       console.log(index, row)
     },
     handleDelete (index, row) {

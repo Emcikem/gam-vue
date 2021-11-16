@@ -1,7 +1,7 @@
 <template>
   <el-form label-width="80px">
     <el-form-item label-width="0px">
-        <user-table></user-table>
+        <user-table @transferedit="getShowable"></user-table>
         <create-user v-if="showCreateUser" @transfer="getShowable" class="pop"></create-user>
     </el-form-item>
     <el-form-item label-width="0px">

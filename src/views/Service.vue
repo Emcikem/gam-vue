@@ -1,8 +1,8 @@
 <template>
   <el-form label-width="80px">
     <el-form-item label-width="0px">
-        <service-table></service-table>
-        <create-service v-if="showCreateService" @transfer="getShowable" class="pop"></create-service>
+        <service-table @transferedit="getShowable"></service-table>
+        <create-service v-show="showCreateService" @transfer="getShowable" class="pop"></create-service>
     </el-form-item>
     <el-form-item label-width="0px">
         <el-button type="primary" round @click="createService">添加服务</el-button>

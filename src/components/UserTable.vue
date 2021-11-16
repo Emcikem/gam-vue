@@ -70,6 +70,7 @@ export default {
       return isVip === 1 ? '是' : '否'
     },
     handleEdit (index, row) {
+      this.$emit('transferedit', true)
       console.log(index, row)
     },
     handleDelete (index, row) {

@@ -19,6 +19,11 @@
         <span slot="title">设备管理</span>
       </el-menu-item>
 
+      <el-menu-item index="/test">
+        <i class="el-icon-menu"></i>
+        <span slot="title">测试</span>
+      </el-menu-item>
+
     </el-menu>
   </el-aside>
 </template>
