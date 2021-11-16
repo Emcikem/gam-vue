@@ -1,7 +1,7 @@
 <template>
   <el-form label-width="80px">
     <el-form-item label-width="0px">
-        <equipment-table @transferedit1="getShowable"></equipment-table>
+        <equipment-table @transferedit="getShowable"></equipment-table>
         <create-equipment v-show="showCreateEquipment" @transfer="getShowable" class="pop"></create-equipment>
     </el-form-item>
     <el-form-item label-width="0px">

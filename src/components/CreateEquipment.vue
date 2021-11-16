@@ -117,7 +117,7 @@ export default {
      * 获取id，从列表页获取id
      * 同时进行更新窗口数据
      */
-    eventBus.$on('updateLister1', (msg, baseData) => {
+    eventBus.$on('updateLister', (msg, baseData) => {
       this.form.id = msg
       this.titleText = '更新服务'
       this.buttonText = '更新'

@@ -71,8 +71,8 @@ export default {
       return usable === 1 ? '可用' : '不可用'
     },
     handleEdit (index, row) {
-      eventBus.$emit('updateLister1', row.id, row)
-      this.$emit('transferedit1', true) // 父子组件
+      eventBus.$emit('updateLister', row.id, row)
+      this.$emit('transferedit', true) // 父子组件
     },
     handleDelete (index, row) {
       axios.delete('api/equipment/delete', {

@@ -2,7 +2,7 @@
   <div>
     <el-table
       :data="userData"
-      class="service-table">
+      class="user-table">
       <el-table-column
         label="用户名"
         width="200px">
@@ -49,7 +49,7 @@
 
 <script>
 import axios from 'axios'
-import { eventBus } from '../main'
+import { eventBus } from '../main.js'
 export default {
   tag: 'UserTable',
   data () {
@@ -93,7 +93,7 @@ export default {
 </script>
 
 <style scoped>
-.service-table {
+.user-table {
   border: 1px solid #DCDFE6;
   width: 100%;
   padding: 20px 20px 20px 20px;

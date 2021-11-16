@@ -7,9 +7,6 @@
       <el-form-item label="用户名">
         <el-input v-model="form.username"></el-input>
       </el-form-item>
-      <el-form-item label="密码">
-        <el-input show-password v-model="form.password"></el-input>
-      </el-form-item>
       <el-form-item label="手机号">
         <el-input v-model="form.phone"></el-input>
       </el-form-item>
@@ -28,11 +25,11 @@
         <el-button @click="cancel">取消</el-button>
       </el-form-item>
     </el-form>
-
   </div>
 </template>
 
 <script>
+
 import axios from 'axios'
 import { eventBus } from '../main'
 
@@ -41,11 +38,10 @@ export default {
   data () {
     return {
       titleText: '创建用户',
-      buttonText: '注册',
+      buttonText: '创建',
       form: {
         id: null,
         username: '',
-        password: '',
         phone: '',
         isVip: 1,
         money: null
@@ -53,10 +49,12 @@ export default {
     }
   },
   methods: {
+    /**
+     * 创建
+     */
     resigter () {
       axios.post('api/user/add', {
         username: this.form.username,
-        password: this.form.password,
         phone: this.form.phone,
         isVip: this.form.isVip,
         money: Number(this.form.money)
@@ -68,11 +66,13 @@ export default {
         }
       }).catch(err => console.log(err))
     },
+    /**
+     * 更新
+     */
     update () {
       axios.post('api/user/change', {
         id: this.form.id,
         username: this.form.username,
-        password: this.form.password,
         phone: this.form.phone,
         isVip: this.form.isVip,
         money: Number(this.form.money)
@@ -84,6 +84,9 @@ export default {
         }
       }).catch(err => console.log(err))
     },
+    /**
+     * 复用组件，添加和更新
+     */
     onSubmit () {
       if (this.form.id === null) {
         this.resigter()
@@ -91,19 +94,21 @@ export default {
         this.update()
       }
     },
+    /**
+     * 取消按钮后，进行初始化，并且和父亲组件通信，关闭当前页面
+     */
     cancel () {
-      this.form.id = null
+      this.id = null
       this.$emit('transfer', false)
-      // this.titleText = '创建用户'
-      // this.buttonText = '创建'
-      // this.form = {
-      //   id: null,
-      //   username: '',
-      //   password: '',
-      //   phone: '',
-      //   isVip: 1,
-      //   money: null
-      // }
+      this.titleText = '创建用户'
+      this.buttonText = '创建'
+      this.form = {
+        id: null,
+        name: '',
+        stock: null,
+        usable: 1,
+        desc: ''
+      }
     }
   },
   created () {
@@ -113,12 +118,12 @@ export default {
      * 同时进行更新窗口数据
      */
     eventBus.$on('updateLister', (msg, baseData) => {
+      this.form.id = msg
       this.titleText = '更新用户'
       this.buttonText = '更新'
       this.form = {
         id: baseData.id,
         username: baseData.username,
-        password: baseData.password,
         phone: baseData.phone,
         isVip: baseData.isVip,
         money: baseData.money
@@ -138,5 +143,8 @@ export default {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   box-shadow: 0 0 25px #909399;
+}
+.desc-input {
+  height: 1px;
 }
 </style>
