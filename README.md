@@ -1,5 +1,9 @@
 # gam-vue
 
+前端框架vue + element
+后端地址：https://github.com/wqrqwerqrw/cust_gam_be
+
+
 > A Vue.js project
 
 ## Build Setup

@@ -38,10 +38,10 @@ export default new VueRouter({
           component: () => import('@/views/Equipment')
         },
         {
-          path: '/test',
-          name: '测试',
-          meta: {title: '测试'},
-          component: () => import('@/views/Test')
+          path: '/userService',
+          name: '用户服务',
+          meta: {title: '用户服务'},
+          component: () => import('@/views/userService')
         }
       ]
     }
