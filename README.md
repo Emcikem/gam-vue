@@ -4,6 +4,19 @@
 后端地址：https://github.com/wqrqwerqrw/cust_gam_be
 
 
+前端域名：http://localhost:9091/
+
+后端域名：http://localhost:9090/
+
+前端进行了域名转发
+
+开启方法：
+先打开golang后端，然后用npm run dev启动前端，通过http://localhost:9091/ 即可访问
+
+
+
+
+
 > A Vue.js project
 
 ## Build Setup
