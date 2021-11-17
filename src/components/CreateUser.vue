@@ -98,7 +98,6 @@ export default {
      * 取消按钮后，进行初始化，并且和父亲组件通信，关闭当前页面
      */
     cancel () {
-      this.id = null
       this.$emit('transfer', false)
       this.titleText = '创建用户'
       this.buttonText = '创建'
@@ -117,8 +116,7 @@ export default {
      * 获取id，从列表页获取id
      * 同时进行更新窗口数据
      */
-    eventBus.$on('updateLister', (msg, baseData) => {
-      this.form.id = msg
+    eventBus.$on('updateLister', (baseData) => {
       this.titleText = '更新用户'
       this.buttonText = '更新'
       this.form = {

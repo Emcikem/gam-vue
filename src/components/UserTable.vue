@@ -71,7 +71,7 @@ export default {
       return isVip === 1 ? '是' : '否'
     },
     handleEdit (index, row) {
-      eventBus.$emit('updateLister', row.id, row)
+      eventBus.$emit('updateLister', row)
       this.$emit('transferedit', true) // 父子组件
     },
     handleDelete (index, row) {

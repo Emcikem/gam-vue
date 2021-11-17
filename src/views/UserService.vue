@@ -24,7 +24,7 @@ export default {
   data () {
     return {
       showCreateUser: false,
-      username: ''
+      username: this.currentUsername
     }
   },
   methods: {
@@ -34,9 +34,6 @@ export default {
     getShowable (msg) {
       this.showCreateUser = msg
     }
-  },
-  created: function () {
-    this.username = this.currentUsername
   }
 }
 </script>
