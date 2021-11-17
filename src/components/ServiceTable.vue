@@ -58,7 +58,7 @@ import axios from 'axios'
 import { eventBus } from '../main.js'
 export default {
   name: 'ServiceTable',
-  props: ['username'],
+  props: ['currentUsername'],
   data () {
     return {
       serviceData: []
@@ -70,8 +70,7 @@ export default {
         if (res.data) {
           this.serviceData = res.data.data
         }
-      })
-      .catch(err => console.log(err))
+      }).catch(err => console.log(err))
   },
   methods: {
     handleEdit (index, row) {
@@ -94,7 +93,7 @@ export default {
     },
     handleAdd (index, row) {
       axios.post('api/userService/add', {
-        'username': this.username,
+        'username': this.currentUsername,
         'serviceName': row.name,
         'serviceCost': row.cost,
         'serviceTime': 0,

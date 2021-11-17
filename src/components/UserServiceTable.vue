@@ -59,7 +59,7 @@ import axios from 'axios'
 import { eventBus } from '../main.js'
 export default {
   name: 'UserServiceTable',
-  props: ['username'],
+  props: ['currentUsername'],
   data () {
     return {
       userData: []
@@ -67,7 +67,7 @@ export default {
   },
   created: function () {
     axios.get('/api/userService/query', {
-      params: {username: this.username}
+      params: {username: this.currentUsername}
     }).then(res => {
       if (res.data) {
         this.userData = res.data.data

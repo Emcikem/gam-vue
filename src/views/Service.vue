@@ -1,7 +1,7 @@
 <template>
   <el-form label-width="80px">
     <el-form-item label-width="0px">
-        <service-table @transferedit="getShowable" :username="username"></service-table>
+        <service-table @transferedit="getShowable" :currentUsername="currentUsername"></service-table>
         <create-service v-show="showCreateService" @transfer="getShowable" class="pop"></create-service>
     </el-form-item>
     <el-form-item label-width="0px">
@@ -23,8 +23,7 @@ export default {
   },
   data () {
     return {
-      showCreateService: false,
-      username: this.currentUsername
+      showCreateService: false
     }
   },
   methods: {

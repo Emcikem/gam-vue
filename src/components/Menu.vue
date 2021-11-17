@@ -19,6 +19,7 @@
         <span slot="title">设备管理</span>
       </el-menu-item>
 
+      <!-- 无子集 -->
       <el-menu-item index="/userService">
         <i class="el-icon-menu"></i>
         <span slot="title">用户服务</span>

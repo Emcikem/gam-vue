@@ -51,7 +51,7 @@
 import axios from 'axios'
 import { eventBus } from '../main.js'
 export default {
-  tag: 'EquipmentTable',
+  name: 'EquipmentTable',
   data () {
     return {
       equipmentData: []
