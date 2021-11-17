@@ -57,7 +57,8 @@
 import axios from 'axios'
 import { eventBus } from '../main.js'
 export default {
-  tag: 'ServiceTable',
+  name: 'ServiceTable',
+  props: ['username'],
   data () {
     return {
       serviceData: []
@@ -92,7 +93,19 @@ export default {
       }).catch(err => console.log(err))
     },
     handleAdd (index, row) {
-      console.log(index, row)
+      axios.post('api/userService/add', {
+        'username': this.username,
+        'serviceName': row.name,
+        'serviceCost': row.cost,
+        'serviceTime': 0,
+        'isUsed': 0
+      }).then(res => {
+        if (res.data) {
+          this.$notify({
+            message: this.$createElement('i', {style: 'color: teal'}, res.data.message)
+          })
+        }
+      }).catch(err => console.log(err))
     }
   }
 }

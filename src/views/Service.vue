@@ -1,7 +1,7 @@
 <template>
   <el-form label-width="80px">
     <el-form-item label-width="0px">
-        <service-table @transferedit="getShowable"></service-table>
+        <service-table @transferedit="getShowable" :username="username"></service-table>
         <create-service v-show="showCreateService" @transfer="getShowable" class="pop"></create-service>
     </el-form-item>
     <el-form-item label-width="0px">
@@ -16,13 +16,15 @@ import CreateService from '../components/CreateService.vue'
 import ServiceTable from '../components/ServiceTable.vue'
 export default {
   name: 'Service',
+  props: ['currentUsername'],
   components: {
     ServiceTable,
     CreateService
   },
   data () {
     return {
-      showCreateService: false
+      showCreateService: false,
+      username: ''
     }
   },
   methods: {
@@ -32,6 +34,9 @@ export default {
     getShowable (msg) {
       this.showCreateService = msg
     }
+  },
+  created: function () {
+    this.username = this.currentUsername
   }
 }
 </script>

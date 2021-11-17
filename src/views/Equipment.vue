@@ -16,6 +16,7 @@ import CreateEquipment from '../components/CreateEquipment.vue'
 import EquipmentTable from '../components/EquimentTable.vue'
 export default {
   name: 'Equipment',
+  props: ['currentUsername'],
   components: {
     EquipmentTable,
     CreateEquipment

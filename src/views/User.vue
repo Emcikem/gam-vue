@@ -16,6 +16,7 @@ import CreateUser from '../components/CreateUser.vue'
 import UserTable from '../components/UserTable.vue'
 export default {
   name: 'User',
+  props: ['currentUsername'],
   components: {
     UserTable,
     CreateUser

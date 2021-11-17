@@ -40,7 +40,7 @@ export default {
   name: 'CreateUserService',
   data () {
     return {
-      titleText: '创建用户',
+      titleText: '创建用户服务',
       buttonText: '创建',
       form: {
         id: null,
