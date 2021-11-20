@@ -96,6 +96,17 @@ export default {
         }
       }).catch(err => console.log(err))
     }
+  },
+  watch: {
+    currentUsername: function (val) {
+      axios.get('/api/userService/query', {
+        params: {username: val}
+      }).then(res => {
+        if (res.data) {
+          this.userData = res.data.data
+        }
+      }).catch(err => console.log(err))
+    }
   }
 }
 </script>
